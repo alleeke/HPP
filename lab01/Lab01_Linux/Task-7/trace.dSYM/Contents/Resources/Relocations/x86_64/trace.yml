@@ -1,0 +1,11 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     trace
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003CC0, symSize: 0xB0 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x0, symBinAddr: 0x100003CC0, symSize: 0xB0 }
+  - { offsetInCU: 0xA1, offset: 0xA1, size: 0x8, addend: 0x0, symName: _initialization, symObjAddr: 0xB0, symBinAddr: 0x100003D70, symSize: 0x70 }
+  - { offsetInCU: 0xE5, offset: 0xE5, size: 0x8, addend: 0x0, symName: _fill_vectors, symObjAddr: 0x120, symBinAddr: 0x100003DE0, symSize: 0x60 }
+  - { offsetInCU: 0x125, offset: 0x125, size: 0x8, addend: 0x0, symName: _trace, symObjAddr: 0x180, symBinAddr: 0x100003E40, symSize: 0x60 }
+  - { offsetInCU: 0x177, offset: 0x177, size: 0x8, addend: 0x0, symName: _print_matrix, symObjAddr: 0x1E0, symBinAddr: 0x100003EA0, symSize: 0x84 }
+...
