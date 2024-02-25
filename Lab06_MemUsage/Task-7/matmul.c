@@ -47,6 +47,69 @@ void mul_kij(int n, int **a, int **b, int **c)
   }
 }
 
+void block_ijk(int n, int **a, int **b, int**c)
+{
+  int blockSz = 100; 
+  if(n % blockSz != 0){
+    printf("Error n mod blockSz != 0");
+    return ; 
+  } 
+  
+  int nBlocks = n/blockSz;
+  int a_block[blockSz][blockSz];
+  int b_block[blockSz][blockSz];
+  int block_i, block_j, block_k, iStart,jStart,kStart;
+  for (block_i = 0; block_i < nBlocks; block_i++){
+    iStart = block_i*blockSz;
+    for (block_j = 0; block_j < nBlocks; block_j++){
+      jStart = block_j*blockSz;
+      for (block_k= 0; block_k < nBlocks; block_k++){
+      kStart = block_k*blockSz;
+        // fill blocks
+        int i,j,k; 
+
+        // a_block = a[i][k]
+        for(i = 0; i < blockSz; i++){
+          for(k = 0; k < blockSz; k++){
+            a_block[i][k] = a[iStart + i][kStart+k];
+          }
+        }
+	      
+        // b_block = b[k][j] 
+        for(k = 0; k < blockSz; k++){
+          for(j = 0; j < blockSz; j++){
+            b_block[k][j] = b[kStart + k][jStart+j];
+          }
+        }
+
+        // loop through block and multiply
+         for (i = 0; i < blockSz; i++){
+          for (j = 0; j < blockSz; j++){
+            int sum = 0; 
+            for (k = 0; k < blockSz; k++){
+              sum += a_block[i][k]*b_block[k][j];             
+            } 
+            c[iStart+i][jStart+j] = sum; 
+          }  
+        }
+  }
+}
+  }
+}
+
+/* kji */
+void mul_kji(int n, int **a, int **b, int **c)
+{
+  int i, j, k;
+  for (k=0; k<n; k++) {
+    for (j=0; j<n; j++) {
+      int x = b[k][j];
+      for (i=0; i<n; i++)
+	c[i][j] += x * a[i][k];   
+    }
+  }
+}
+
 /* ijk */
 void mul_ijk(int n, int **a, int **b, int **c)
 {
@@ -113,9 +176,29 @@ int main()
   time=get_wall_seconds()-time;
   printf("Version ijk, time = %f\n",time);
   time=get_wall_seconds();
-  mul_jik(n, a, b, c);
+
+  for ( i = 0 ; i < n ; i +=10 ) printf("%d\t", c[i][1]);
+  printf("\n");
+
+  /* mul_jik(n, a, b, c);
   time=get_wall_seconds()-time;
   printf("Version jik, time = %f\n",time);
+
+  time=get_wall_seconds()-time;
+  mul_kji(n, a, b, c);
+  time=get_wall_seconds()-time;
+  printf("Version kji, time = %f\n",time); */
+
+  time=get_wall_seconds();
+  block_ijk(n, a, b, c);
+  time=get_wall_seconds()-time;
+  printf("Version block_ijk, time = %f\n",time);
+  
+  printf("Product of first col entered matrices:\n");
+ 
+  for ( i = 0 ; i < n ; i +=10 ) printf("%d\t", c[i][1]);
+  printf("\n");
+    
 
   /*
     printf("Product of entered matrices:\n");

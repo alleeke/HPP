@@ -12,7 +12,7 @@ void myFunctionThatDoesAFewThings(){
     }
 }
 
-inline void myInlineFunctionThatDoesAFewThings(){
+static inline void myInlineFunctionThatDoesAFewThings(){
     int a = 1; 
     int b = 2; 
     for (int i = 0; i < b << 10; i++)
@@ -24,7 +24,7 @@ inline void myInlineFunctionThatDoesAFewThings(){
     }
 }
 
-#define FAST 0
+#define FAST 1
 
 int main(){
 
