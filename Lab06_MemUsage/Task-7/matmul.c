@@ -177,27 +177,27 @@ int main()
   printf("Version ijk, time = %f\n",time);
   time=get_wall_seconds();
 
-  for ( i = 0 ; i < n ; i +=10 ) printf("%d\t", c[i][1]);
+  /* for ( i = 0 ; i < n ; i +=10 ) printf("%d\t", c[i][1]);
   printf("\n");
-
-  /* mul_jik(n, a, b, c);
+ */
+  mul_jik(n, a, b, c);
   time=get_wall_seconds()-time;
   printf("Version jik, time = %f\n",time);
 
   time=get_wall_seconds()-time;
   mul_kji(n, a, b, c);
   time=get_wall_seconds()-time;
-  printf("Version kji, time = %f\n",time); */
+  printf("Version kji, time = %f\n",time); 
 
   time=get_wall_seconds();
   block_ijk(n, a, b, c);
   time=get_wall_seconds()-time;
   printf("Version block_ijk, time = %f\n",time);
   
-  printf("Product of first col entered matrices:\n");
+  /* printf("Product of first col entered matrices:\n");
  
   for ( i = 0 ; i < n ; i +=10 ) printf("%d\t", c[i][1]);
-  printf("\n");
+  printf("\n"); */
     
 
   /*
