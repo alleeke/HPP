@@ -1,11 +1,12 @@
-CFLAGS = -O3 -Wall -Werror
-SOURCE = main.c quick_sort.c 
+CFLAGS = -g -O3 -Wall -Werror
+LDFLAGS = -fopenmp
+SOURCE = main.c quick_sort.c quick_sort_parallel.c
 EXECUTABLE = quick_sort
 
 all:$(EXECUTABLE)
 
 $(EXECUTABLE): $(SOURCE)
-	gcc $(SOURCE) -o $(EXECUTABLE)
+	gcc ${CFLAGS} ${LDFLAGS} $(SOURCE) -o $(EXECUTABLE)
 
 clean:
 	rm $(EXECUTABLE)

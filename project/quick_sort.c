@@ -13,7 +13,7 @@ int partition(sortType* list, int n, int N){
     based on the pivot element. The pivot element can be chosen
     in different ways. Here we chose the last element as pivot. 
 
-    The idea is from https://www.geeksforgeeks.org/quick-sort/
+    The code is from https://www.geeksforgeeks.org/quick-sort/
 
     Output: 
         returns index of the pivot element after the partioning is
@@ -24,11 +24,6 @@ int partition(sortType* list, int n, int N){
         size of list
     */ 
 
-/*     printf("List before partition: ");
-    for (int i = n; i < N; i++)
-        printf("%d\t",list[i]);   
-    printf("\n");  */
-
     int pivot = list[N-1]; 
 
     int i = n-1;
@@ -38,17 +33,9 @@ int partition(sortType* list, int n, int N){
         i++; 
         swap(&list[i],&list[j]); 
     }
-    
-    
     }
     swap(&list[i+1],&list[N-1]); 
-
- /*    printf("List after partition:  ");
-    for (int i = n; i < N; i++)
-        printf("%d\t",list[i]); 
-    printf("\n");  */
-
-
+    
     return i+1; 
 }
 
